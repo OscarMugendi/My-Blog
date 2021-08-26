@@ -8,6 +8,7 @@ from . import main
 from app import db
 import urllib.request
 from .forms import PostForm, CommentForm
+from app.requests import getQuotes
 
 main = Blueprint('main', __name__)
 
@@ -16,10 +17,11 @@ main = Blueprint('main', __name__)
 def home():
     #page = request.args.get('page',1,type=int)
     #posts = Post.query.order_by(Post.date_posted.desc()).paginate(per_page=5)
+    quotes = getQuotes()
     posts = Post.query.all()
 
     title = "Home"
-    return render_template('home.html', posts=posts, title=title)
+    return render_template('home.html', posts=posts, title=title, quotes=quotes)
 
 
 @main.route('/user/<uname>')
