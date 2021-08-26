@@ -12,17 +12,10 @@
 </div>
 <div class="container text-center" style="padding-bottom: 20px;">
     <a href="{{url_for('main.new_post')}}" class="btn btn-lg btn-success"><b>New Post</b></a>
-</div>
-<hr>
-<br>
-<div class="container">
-    <div class="container">
-        <div class="container">
-            <div class="container">
-                <a href="{{url_for('main.all_posts')}}" class="btn btn-sm btn-success -center">View Blog</a>
-            </div>
-        </div>
-    </div>
     <hr>
+    <br>
+    <a href="{{url_for('main.all_posts')}}" class="btn btn-md btn-success -center">View Posts</a>
 </div>
+<br>
+<hr>
 {%endblock%}
