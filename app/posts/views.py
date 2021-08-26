@@ -21,7 +21,7 @@ def new_post():
 
         return redirect(url_for('main.home')) 
 
-    return render_template('create_post.html', title='New Post',form=form, legend='New Post')
+    return render_template('create_post.html', title='New Post',form=form)
 
 
 @posts.route("/post/<int:post_id>")

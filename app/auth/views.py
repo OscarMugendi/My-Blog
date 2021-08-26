@@ -16,7 +16,7 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user, login_form.remember.data)
 
-            return redirect(url_for('home.html'))
+            return redirect(url_for('main.home'))
 
             flash('Invalid username or password')
 
@@ -28,15 +28,15 @@ def register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
 
         flash('Your account has been created!', 'success')
 
-        return redirect(url_for('auth.login'))
+        welcome_message("Welcome to the My Blog","email/welcome",user.email,user=user)
 
-        title = "New Account"
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html', form=form)
 
