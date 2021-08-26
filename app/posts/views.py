@@ -1,9 +1,13 @@
-
+from flask_wtf import FlaskForm
+from wtforms import  StringField,SelectField,TextAreaField,SubmitField
+from wtforms.validators import Required
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
 from flask_login import current_user, login_required
 from app import db
-from app.models import Post
+from app.models import User, Post
 from app.posts.forms import PostForm
+from. import main
+import urllib.request
 
 posts = Blueprint('posts', __name__)
 
@@ -21,7 +25,7 @@ def new_post():
 
         return redirect(url_for('main.home')) 
 
-    return render_template('create_post.html', title='New Post',form=form)
+    return render_template('create_post.html',form=form)
 
 
 @posts.route("/post/<int:post_id>")
@@ -52,10 +56,9 @@ def update_post(post_id):
         form.title.data = post.title
         form.content.data = post.content 
 
-    return render_template('create_post.html', title='Update Post',form=form, legend='Update Post')   
+    return render_template('create_post.html',form=form,)   
 
 
-#Deleting a post function
 @posts.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):

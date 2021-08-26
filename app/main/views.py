@@ -1,15 +1,15 @@
 from flask_wtf import FlaskForm
 from wtforms import  StringField,SelectField,TextAreaField,SubmitField
 from wtforms.validators import Required
-
-
-
-from flask import render_template, request, Blueprint
-from app.models import Post
+from flask_login import login_required, current_user
+from flask import render_template, request, Blueprint, redirect, url_for, abort
+from app.models import User, Post
+from . import main
+from app import db
+import urllib.request
 
 main = Blueprint('main', __name__)
 
-#Home function
 @main.route("/")
 @main.route("/home")
 def home():
