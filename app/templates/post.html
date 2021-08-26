@@ -1,12 +1,28 @@
-{% extends 'base.html' %}
-{% block content %}
-<article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-        </div>
-        <h2 class="article-title">{{ post.title }}</h2>
-        <p class="article-content">{{ post.content }}</p>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%block styles%}
+    {{ super() }}
+{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <h3><b>{{post.title}}</b></h3>
+        <hr>
+        <p>{{post.content}}</p>
     </div>
-</article>
-{% endblock content %}
+    <br>
+    <div class="row">
+        <h4><b>Comments</b></h4>
+        <hr>
+        {% if current_user.is_authenticated %}
+            {{ wtf.quick_form(CommentForm) }}
+        {%endif%}
+        {{macro.displayComments(comments)}}
+        <br>
+    </div>
+
+</div>
+{%endblock%}

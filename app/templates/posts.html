@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{%import 'macros.html' as macro%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3> {{user.username| capitalize}} </h3>
+        <hr>
+        <div class="col-md-9">
+            <p>No of posts: {{posts_count}}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+              <h3> Posts </h3>
+              <hr>
+               {{macro.displayPosts(posts)}}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

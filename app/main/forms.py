@@ -8,5 +8,5 @@ class PostForm(FlaskForm):
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):
-    comment_id = TextAreaField('Comment')
+    comment = TextAreaField('Comment')
     submit = SubmitField('Submit') 
