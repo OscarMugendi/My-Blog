@@ -4,7 +4,7 @@
             <div class="well well-lg">
                 <h4>{{post.title}}</h4>
                 <p>{{post.content| truncate(100)}}</p>
-                <p>Written by:  {{post.user.username}} <a href="/post/{{post.id}}" class="btn btn-primary pull-right">View</a> </p>
+                <p>Written by:  {{post.user.username}} <a href="/post/{{post.id}}" class="btn btn-primary pull-right">View this post</a> </p>
             </div>
         </div>
     {%endfor%}
@@ -13,8 +13,7 @@
 {%macro displayComments(comments_list)%}
     {%for comment in comments_list%}
         <div class="col-md-12">
-            <h5>{{comment.user.username}}</h5>
-            <p>{{comment.comment}}</p>
+            <h5><i>'{{comment.comment}}' </i>&nbsp;&nbsp;by&nbsp;&nbsp;<b>{{comment.user.username}}</b></h5>
         </div>
     {%endfor%}
 {%endmacro%}

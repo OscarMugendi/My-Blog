@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="container">
         <h3> {{user.username| capitalize}} </h3>
         <hr>
-        <div class="col-md-9">
+        <div class="container">
             <p>Email: {{user.email}}</p>
             <br>
-            <p>No of posts: {{posts.count}}</p>
+            <p>No of posts: {{posts.posts_count}}</p>
         </div>
     </div>
 </div>

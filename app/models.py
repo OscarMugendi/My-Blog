@@ -99,7 +99,7 @@ class Comment(db.Model):
 
     @classmethod
     def get_comments(cls,post):
-        comments = Comment.query.filter_by(post_id=post).all()
+        comments = Comment.query.filter_by(post_id=post.id).all()
         return comments
 
     def __repr__(self):

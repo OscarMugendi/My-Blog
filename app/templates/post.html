@@ -15,11 +15,13 @@
     </div>
     <br>
     <div class="row">
-        <h4><b>Comments</b></h4>
-        <hr>
         {% if current_user.is_authenticated %}
-            {{ wtf.quick_form(CommentForm) }}
+            {{ wtf.quick_form(form) }}
         {%endif%}
+        <hr>
+        <br>
+        <h4 style="text-align:center"><b>Comments</b></h4>
+        <br>
         {{macro.displayComments(comments)}}
         <br>
     </div>

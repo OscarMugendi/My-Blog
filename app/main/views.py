@@ -41,7 +41,7 @@ def new_post():
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data)
+        post = Post(title=form.title.data, content=form.content.data,user=current_user)
 
         #new_post = Post(title=title,post=post,user = current_user)
 
@@ -77,15 +77,15 @@ def all_posts():
 def posts(id):
     post = Post.get_post(id)
 
-    comment_form = CommentForm()
-    if comment_form.validate_on_submit():
-        comment = comment_form.comment.data
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = form.comment.data
 
-        new_comment = Comment(comment = comment,user = current_user,post_id = post)
+        new_comment = Comment(comment = comment,user = current_user,post_id = post.id)
 
         new_comment.save_comment()
 
 
     comments = Comment.get_comments(post)
 
-    return render_template("post.html", post = post, comment_form = comment_form, comments = comments)
+    return render_template("post.html", post = post, form = form, comments = comments)
